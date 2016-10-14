@@ -8,19 +8,19 @@
 return [
     'driver' => env('MAIL_DRIVER', 'smtp'),
 
-    'host' => env('MAIL_HOST', 'smtp.caissa.com.cn'),
+    'host' => env('MAIL_HOST', 'smtp.163.com'),
 
     'port' => env('MAIL_PORT', 25),
 
     'from' => [
-        'address' => 'luhuajun@caissa.com.cn',
+        'address' => '',
         'name' => null
     ],
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
-    'username' => env('MAIL_USERNAME','caissa(luhuajun)'),
+    'username' => env('MAIL_USERNAME',''),
 
-    'password' => env('MAIL_PASSWORD','jaylu123@.'),
+    'password' => env('MAIL_PASSWORD',''),
 
     'sendmail' => '/usr/sbin/sendmail -bs',
 

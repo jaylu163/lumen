@@ -49,8 +49,12 @@ $app->singleton(
     App\Console\Kernel::class
 );
 
-// log 按天命名文件
+// 添加发邮件功能
+$app->singleton('mailer', function () use ($app) {
+    return $app->loadComponent('mail', Illuminate\Mail\MailServiceProvider::class, 'mailer');
+});
 
+// log 按天命名文件
 $app->configureMonologUsing(function(Monolog\Logger $monolog) use ($app) {
     return $monolog->pushHandler(
         new \Monolog\Handler\RotatingFileHandler($app->storagePath().'/logs/lumen.log')
