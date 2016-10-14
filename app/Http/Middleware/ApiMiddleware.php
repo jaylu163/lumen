@@ -6,9 +6,11 @@ use Log;
 use DB;
 use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Http\Response;
+
+
 use Closure;
 
-class ApiMiddleware{
+class ApiMiddleware {
     /**
      * Handle an incoming request.
      *
@@ -20,7 +22,10 @@ class ApiMiddleware{
 
         return $next($request);
     }
+    public function terminate($request, $response){
 
+        // Store the session data...
+    }
     public function getRequestInfo(Request $request){
         $server = $request->createFromGlobals();
         Log::info('no found route ',[],[]);

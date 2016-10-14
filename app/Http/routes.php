@@ -19,4 +19,5 @@ $app->group(['prefix' => 'demo','namespace' => 'App\Http\Controllers'],function(
 
     $app->get('abc','DemoController@index');
     $app->get('getUser','DemoController@getUserById');
+    $app->get('sendMail','DemoController@sendMail');
 });

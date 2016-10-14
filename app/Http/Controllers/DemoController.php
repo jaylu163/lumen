@@ -7,6 +7,8 @@
  */
  namespace App\Http\Controllers;
  use App\Models\UserModel;
+ use Illuminate\Support\Facades\Mail;
+
  class DemoController extends Controller{
 
      public function index(){
@@ -18,5 +20,19 @@
 
            $result = UserModel::getUserById(1);
            print_r($result);die;
+     }
+
+     public function sendMail(){
+
+         $name = '学院君';
+         $flag = Mail::send('emails.test',['name'=>$name],function($message){
+             $to = '320211697@qq.com';
+             $message ->to($to)->subject('测试邮件');
+         });
+         if($flag){
+             echo '发送邮件成功，请查收！';
+         }else{
+             echo '发送邮件失败，请重试！';
+         }
      }
  }
