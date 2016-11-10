@@ -16,6 +16,11 @@ return [
         'address' => '',
         'name' => null
     ],
+
+    'to' =>['320211697@qq.com'],
+
+    'subject' =>'',
+    
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
     'username' => env('MAIL_USERNAME',''),

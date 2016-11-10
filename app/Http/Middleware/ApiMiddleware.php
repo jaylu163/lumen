@@ -20,12 +20,13 @@ class ApiMiddleware {
      */
     public function handle($request, Closure $next){
 
-        return $next($request);
-    }
-    public function terminate($request, $response){
+        //return $next($request);
+        $response = $next($request);
+        Log::info('info:aaaaaaaa');
 
-        // Store the session data...
+        return $response;
     }
+
     public function getRequestInfo(Request $request){
         $server = $request->createFromGlobals();
         Log::info('no found route ',[],[]);

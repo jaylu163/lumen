@@ -12,6 +12,7 @@ use DB;
 use Symfony\Component\HttpFoundation\Request;
 //use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Support\Facades\Mail;
 
 class ApiHandler extends Handler{
     /**
@@ -53,7 +54,10 @@ class ApiHandler extends Handler{
      */
     public function render($request, Exception $e)
     {
+        $this->sendMail();
         return parent::render($request, $e);
+
+
     }
 
 
@@ -62,4 +66,16 @@ class ApiHandler extends Handler{
 
     }
 
+    public function sendMail(){
+
+        $flag = Mail::send('emails.test',['name'=>''],function($message){
+            $to = '320211697@qq.com';
+            $message ->to($to)->subject($subject);
+        });
+        if(!$flag){
+            echo '发送邮件成功，请查收！';
+        }else{
+            echo '发送邮件失败，请重试！';
+        }
+    }
 }
