@@ -8,7 +8,8 @@
  namespace App\Http\Controllers;
  use App\Models\UserModel;
  use Illuminate\Support\Facades\Mail;
-
+ use Log;
+ use DB;
  class DemoController extends Controller{
 
      public function index(){
@@ -19,6 +20,7 @@
      public function getUserById(){
 
            $result = UserModel::getUserById(1);
+
            print_r($result);die;
      }
 

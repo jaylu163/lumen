@@ -6,8 +6,7 @@ use Log;
 use DB;
 use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Http\Response;
-
-
+use Illuminate\Database\query;
 use Closure;
 
 class ApiMiddleware {
@@ -18,23 +17,30 @@ class ApiMiddleware {
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next){
+    public function handle(Request $request,  Closure $next){
 
-        //return $next($request);
+        $this->getRequestInfo($request);
+        $this->getSqlLog();
         $response = $next($request);
-        Log::info('info:aaaaaaaa');
 
+   /*     DB::listen(function($sql, $bindings, $time) {
+            \Log::debug("sql: " . $sql . "; value: " . json_encode($bindings) . "; time: " . $time);
+        });*/
         return $response;
     }
 
     public function getRequestInfo(Request $request){
-        $server = $request->createFromGlobals();
-        Log::info('no found route ',[],[]);
+        $url   = $request->url();
+        $ip    = $request->ip();
+        $query = $request->getQueryString();
 
+        Log::info($url.'---IP:'.$ip.'---querystring:'.$query);
 
     }
     public function getSqlLog(){
-        $queries = DB::getQueryLog();
-        var_dump($queries);die;
+
+      /*  $response = new Response();
+
+        var_dump($response);*/
     }
 }

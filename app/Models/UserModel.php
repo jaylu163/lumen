@@ -26,6 +26,7 @@ class UserModel extends BaseModel{
 
     public static function getUserById($id){
         $result = self::select(['id','name'])->where('id',$id)->get()->first()->toArray();
+
         return $result;
     }
 
