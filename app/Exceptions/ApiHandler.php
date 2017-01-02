@@ -70,7 +70,7 @@ class ApiHandler extends Handler{
 
         $flag = Mail::send('emails.test',['name'=>''],function($message){
             $to = '320211697@qq.com';
-            $message ->to($to)->subject('exception.............');
+            $message ->to($to)->subject('exception.............,please check your code!!!!');
         });
         if(!$flag){
             echo '发送邮件成功，请查收！';

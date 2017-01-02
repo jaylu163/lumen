@@ -24,12 +24,18 @@
            print_r($result);die;
      }
 
+
+     public function phpinfo(){
+
+         phpinfo();
+     }
+
      public function sendMail(){
 
-         $name = 'demo,test ....huaan';
+         $name = 'demohuaan';
          $flag = Mail::send('emails.test',['name'=>$name],function($message){
              $to = '320211697@qq.com';
-             $message ->to($to)->subject('测试邮件');
+             $message ->to($to)->subject('邮件错误警告。。');
          });
          if(!$flag){
              echo '发送邮件成功，请查收！';
