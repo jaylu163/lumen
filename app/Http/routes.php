@@ -17,7 +17,8 @@ $app->get('/', function () use ($app) {
 
 $app->group(['prefix' => 'demo','namespace' => 'App\Http\Controllers'],function() use ($app){
 
-    $app->get('abc','DemoController@index');
+    $app->get('index','DemoController@index');
     $app->get('getUser','DemoController@getUserById');
     $app->get('sendMail','DemoController@sendMail');
+    $app->get('phpinfo','DemoController@phpinfo');
 });
