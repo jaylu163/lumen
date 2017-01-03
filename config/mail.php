@@ -25,7 +25,7 @@ return [
 
     'username' => env('MAIL_USERNAME','mengxiang10241@163.com'),
 
-    'password' => env('MAIL_PASSWORD','tianyahaijiao889'),
+    'password' => env('MAIL_PASSWORD',''),
 
     'sendmail' => '/usr/sbin/sendmail -bs',
 
