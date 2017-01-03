@@ -13,7 +13,7 @@ return [
     'port' => env('MAIL_PORT', 25),
 
     'from' => [
-        'address' => '',
+        'address' => 'mengxiang10241@163.com',
         'name' => null
     ],
 
@@ -23,9 +23,9 @@ return [
 
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
-    'username' => env('MAIL_USERNAME',''),
+    'username' => env('MAIL_USERNAME','mengxiang10241@163.com'),
 
-    'password' => env('MAIL_PASSWORD',''),
+    'password' => env('MAIL_PASSWORD','tianyahaijiao889'),
 
     'sendmail' => '/usr/sbin/sendmail -bs',
 

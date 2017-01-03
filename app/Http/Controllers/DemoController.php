@@ -18,7 +18,7 @@
      }
 
      public function getUserById(){
-
+           
            $result = UserModel::getUserById(1);
 
            print_r($result);die;
