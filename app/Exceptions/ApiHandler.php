@@ -54,7 +54,7 @@ class ApiHandler extends Handler{
      */
     public function render($request, Exception $e)
     {
-        $this->sendMail();
+        $this->sendMail($e);
         return parent::render($request, $e);
 
 
@@ -66,11 +66,13 @@ class ApiHandler extends Handler{
 
     }
 
-    public function sendMail(){
+    public function sendMail(Exception $exception){
 
-        $flag = Mail::send('emails.test',['name'=>''],function($message){
+        $exceptionString = $exception->getTraceAsString();
+        $flag = Mail::send('emails.exception',['name'=>'exception^^^^','exception'=>$exceptionString],function($message){
             $to = '320211697@qq.com';
             $message ->to($to)->subject('exception.............,please check your code!!!!');
+
         });
         if(!$flag){
             echo '发送邮件成功，请查收！';

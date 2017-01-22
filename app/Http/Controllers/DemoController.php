@@ -33,7 +33,7 @@
      public function sendMail(){
 
          $name = 'demohuaan';
-         $flag = Mail::send('emails.test',['name'=>$name],function($message){
+         $flag = Mail::send('emails.email',['name'=>$name],function($message){
              $to = '320211697@qq.com';
              $message ->to($to)->subject('邮件错误警告。。');
          });

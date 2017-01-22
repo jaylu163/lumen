@@ -20,8 +20,9 @@ class ApiMiddleware {
     public function handle(Request $request,  Closure $next){
 
         $this->getRequestInfo($request);
-        $this->getSqlLog();
+
         $response = $next($request);
+        $this->getSqlLog();
 
    /*     DB::listen(function($sql, $bindings, $time) {
             \Log::debug("sql: " . $sql . "; value: " . json_encode($bindings) . "; time: " . $time);
@@ -42,5 +43,9 @@ class ApiMiddleware {
       /*  $response = new Response();
 
         var_dump($response);*/
+
+        $queryLog = DB::getQueryLog();
+
+        var_dump($queryLog);
     }
 }
